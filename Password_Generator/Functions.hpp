@@ -1,7 +1,5 @@
 #pragma once
-const void title_header() {
-    std::cout << "Password generator v1.3 by Wiktor Kozakowski\n";
-};
+
 
 void input_password_length() {
     while (true) {
@@ -100,33 +98,22 @@ void summing_the_size() { // summing up the data
     };
 };
 
-void generating_animation() {
-    for (int j = 0; j < 4; j++) {
-        std::cout << "\rGenerating   \rGenerating";
-        for (int i = 0; i < 3; i++) {
-            std::cout << ".";
-            Sleep(250);
-        }
-    } //3 secund visual animation, user will think password is more secured :)
-};
+
 
 void generator_base_and_results() {
     std::cout << "Here are " << value_tries << " results of passwords : \n";
-    for (int i = 0; i <= value_tries; i++) {
+    for (int i = 0; i < value_tries; i++) {
         for (int i = 0; i < value_length; i++) {
             int one_time_random = rand() % summing;
             password += data_summary[one_time_random];
         };//Main generation
+        Sleep(150);
         std::cout << password;
         std::cout << std::endl;
         password = "";
-        Sleep(150);
+        
     };//Generating more results
+    std::cout << "Press anything to go back";
+    pressed = _getche();
 };
 
-void end_info() {
-    std::cout << "Do you want to generate another password?[1/0]: ";
-    std::cin >> check_another;
-    if (check_another == false) { std::cout << "Thank you for using the program!\n"; };
-    if (check_another == true) { system("CLS"); };
-};
