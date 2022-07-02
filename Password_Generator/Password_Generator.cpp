@@ -1,9 +1,14 @@
 ﻿#include <iostream>
 #include <conio.h>
-#include "windows.h" 
+#include "windows.h"  
 #include <ctime>
 #include <vector>
 #include <string>
+#define KEY_UP 87
+#define KEY_UP2 72
+#define KEY_DOWN 83
+#define KEY_DOWN2 80
+#define KEY_ENTER 13
 #include "Data_Base.hpp"
 #include "Functions.hpp"
 #include "Menu.hpp"
@@ -11,11 +16,18 @@
 // Config and main function
 // Edit this file to make ajustments
 int main()
-{
+{  
     //Base settings  
     srand(time(NULL));
     setlocale(LC_CTYPE, "Polish"); // for polish characters to work
-       
+     //Header
+    header_text = "Password generator v2.1 by Wiktor Kozakowski 2022";
+     
+	//Colors
+    main_text_color = 14;
+    main_text_select_color = 240;
+    main_warning_color = 4; // header color too
+
     //Base values
     // change the limits at will
     value_tries_min = 1;
@@ -41,16 +53,8 @@ int main()
     check_special_hard = 0;
     check_polish_special = 0;
 
+	//Base func
     menu_init(); 
 	      
-    //Base functions call
-    while (check_another == true) {
-        input_password_length();
-        input_password_iterations();
-        selecting_settings();
-        system("CLS");
-        summing_the_size();
-        generator_base_and_results();
-          
-    };
+
 }

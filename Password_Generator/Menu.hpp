@@ -1,38 +1,3 @@
-//MAIN CONFIG
-// Key binding
-#define KEY_UP 87
-#define KEY_UP2 72
-#define KEY_DOWN 83
-#define KEY_DOWN2 80
-#define KEY_ENTER 13
-//Header text
-std::string header_text = "Password generator v2.0 by Wiktor Kozakowski 2022";
-
-//Change colors here
-int main_text_color = 14;
-int main_text_select_color = 240;
-int main_warning_color = 4; // header color too
-
-//Menu options
-std::string menu_base[] = { "[ ]Include Numbers", "[ ]Include Lower Case", "Include Upper Case", "Include Special Easy", "Include Special Hard", "Include Polish Symbols", "Password length:", "Amount of passwords generated:", ">Generate<", "GitHub", "Exit"};
-//To add more options just type name of the option here, and add it's function in selection
-//Menu will dynamicly grow, you need to only add a function for every new menu option eg. if(selection==8){} for the 8th option
-
-//END OF CONFIG
-
-//Edit the color values at the color config above
-void text_def(std::string text) {
-    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);  SetConsoleTextAttribute(h, main_text_color); std::cout << text << std::endl;
-};
-void text_sel(std::string text) {
-    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);  SetConsoleTextAttribute(h, main_text_select_color); std::cout << text << std::endl; SetConsoleTextAttribute(h, 15);
-};
-void text_warning(std::string text) {
-    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);  SetConsoleTextAttribute(h, main_warning_color); std::cout << text << std::endl; SetConsoleTextAttribute(h, 15);
-};
-void header() { text_warning(header_text); }
-
-
 
 void menu() {
     header();
@@ -88,7 +53,7 @@ void checkbox() {
     if (check_polish_special == 0) {
         menu_base[5] = "[ ]Include Polish Symbols";
     }
-
+    //Checking if the state of the checkbox is 1 or 0 and changing the text of the menu option accordingly
 }
 
 
@@ -156,6 +121,7 @@ void selection() {
 				exit(0);
 				}
         };
+		// if the user presses enter, the selected option will be executed
         system("CLS");
         menu();
         // do not touch, it is used to refresh the menu

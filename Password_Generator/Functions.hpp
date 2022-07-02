@@ -1,6 +1,17 @@
 #pragma once
 
 
+void text_def(std::string text) {
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);  SetConsoleTextAttribute(h, main_text_color); std::cout << text << std::endl;
+};
+void text_sel(std::string text) {
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);  SetConsoleTextAttribute(h, main_text_select_color); std::cout << text << std::endl; SetConsoleTextAttribute(h, 15);
+};
+void text_warning(std::string text) {
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);  SetConsoleTextAttribute(h, main_warning_color); std::cout << text << std::endl; SetConsoleTextAttribute(h, 15);
+};
+void header() { text_warning(header_text); }
+
 void input_password_length() {
     while (true) {
         std::cout << "Please enter the length of the password: "; std::cin >> value_length;
@@ -113,7 +124,7 @@ void generator_base_and_results() {
         password = "";
         
     };//Generating more results
-    std::cout << "Press anything to go back";
+    text_warning("Press anything to go back");
     pressed = _getche();
 };
 
